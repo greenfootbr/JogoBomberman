@@ -1,0 +1,20 @@
+#BlueJ class context
+comment0.target=Bomberman
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Formiga\ here.\r\n\ \r\n\ @author\ (Allen\ Hichard)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=right\ left\ down\ up\ space
+comment1.target=Bomberman(java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String)
+comment2.params=
+comment2.target=boolean\ getControle()
+comment3.params=
+comment3.target=void\ act()
+comment4.params=
+comment4.target=void\ checkup()
+comment5.params=
+comment5.target=void\ checar()
+comment6.params=
+comment6.target=void\ chegarBloco()
+comment7.params=
+comment7.target=void\ chegarParede()
+comment8.params=
+comment8.target=void\ chegarBomba()
+numComments=9

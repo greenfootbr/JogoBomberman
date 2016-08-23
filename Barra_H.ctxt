@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=Barra_H
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Barra_H\ here.\r\n\ \r\n\ @author\ (Allen\ Hichard)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=
+comment1.target=void\ act()
+comment1.text=\r\n\ Act\ -\ do\ whatever\ the\ Barra_H\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+numComments=2
