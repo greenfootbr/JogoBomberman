@@ -23,7 +23,7 @@ Fiz um Fork do repositório no GitHub para treinar minhas habilidades de Clean C
 
 - <a href="https://www.greenfoot.org/scenarios/30605">Play the game here! </a>
 
-![alt text](https://github.com/gustavoestevesr/JogoBomberman/main/screenshot.png)
+![alt text](https://github.com/gustavoestevesr/JogoBomberman/blob/master/screenshot.png)
 
 ## Instalação | Installation
 
