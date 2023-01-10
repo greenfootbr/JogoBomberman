@@ -15,13 +15,21 @@ public class Mundo extends World
         Greenfoot.start();
         Greenfoot.playSound("05-level-1.mp3");
                        
+        criarItensEspeciais();
+        
         criarBlocosDestrutiveis();   
-        criarBlocosIndestrutiveis(); 
+        criarBlocosIndestrutiveis();            
              
         criarPersonagens();
         criarBordasDoCenario(); 
     }
     
+    public void criarItensEspeciais(){
+        addObject(new MaisVelocidade(), 295, 210);        
+        addObject(new MaisVelocidade(), 215, 330);        
+        addObject(new MaisVelocidade(), 375, 130);        
+    }
+
     public void criarPersonagens(){
         addObject(new Bomberman("d", "a", "s", "w", "r"), 55, 45);
         addObject(new Bomberman("right", "left", "down", "up", "space"), 534, 435);

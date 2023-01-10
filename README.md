@@ -1,6 +1,7 @@
-# Refatoração do Jogo demonstrativo do Bomberman
+# Jogo demonstrativo do Bomberman
 Este projeto foi desenvolvido pelo voluntário Allen Hichard sob a orientação do professor Aécio Junior. Este trabalho foi fonte de estudo no trabalho de conclusão de Curso  entitulado XXXXXXXXXX e publicado pela Universidade XXXXXXX - XXXXX no ano e XXXXX. 
 
+# Proposta: refatoração do jogo demonstrativo do Bomberman
 Fiz um Fork do repositório no GitHub para treinar minhas habilidades de Clean Code para melhorar ainda mais o projeto. Removendo códigos repetidos, alterar nomenclatura das variáveis, métodos e classes para tornar mais claro e intuitivo, otimizações e muito mais.
 
 ## Atributos do Jogo
@@ -17,6 +18,12 @@ Fiz um Fork do repositório no GitHub para treinar minhas habilidades de Clean C
 ## Refatoração | Team
 
 * Gustavo Esteves (gustavoestevesr@gmail.com)
+
+## Jogar o jogo?
+
+- <a href="https://www.greenfoot.org/scenarios/30605">Play the game here! </a>
+
+![alt text](https://github.com/gustavoestevesr/JogoBomberman/main/screenshot.png)
 
 ## Instalação | Installation
 
@@ -36,3 +43,4 @@ Fiz um Fork do repositório no GitHub para treinar minhas habilidades de Clean C
 > You may obtain a copy of the License at
 >
 >    http://www.apache.org/licenses/LICENSE-2.0
+
