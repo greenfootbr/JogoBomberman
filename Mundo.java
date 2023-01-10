@@ -34,42 +34,12 @@ public class Mundo extends World
         addObject(new BarraHorizontal(), 297, 494);
     }
     
-    BlocoIndestrutivel []blocosIndestrutiveis = new BlocoIndestrutivel[30];        
-    /* BlocoIndestrutivel BlocoIndestrutivel1 = new BlocoIndestrutivel();
-    BlocoIndestrutivel BlocoIndestrutivel2 = new BlocoIndestrutivel();
-    BlocoIndestrutivel BlocoIndestrutivel3 = new BlocoIndestrutivel();
-    BlocoIndestrutivel BlocoIndestrutivel4 = new BlocoIndestrutivel();
-    BlocoIndestrutivel BlocoIndestrutivel5 = new BlocoIndestrutivel();
-    BlocoIndestrutivel BlocoIndestrutivel6 = new BlocoIndestrutivel();
-    BlocoIndestrutivel BlocoIndestrutivel7 = new BlocoIndestrutivel();
-    BlocoIndestrutivel BlocoIndestrutivel8 = new BlocoIndestrutivel();
-    BlocoIndestrutivel BlocoIndestrutivel9 = new BlocoIndestrutivel();
-    BlocoIndestrutivel BlocoIndestrutivel10 = new BlocoIndestrutivel();
-    BlocoIndestrutivel BlocoIndestrutivel11 = new BlocoIndestrutivel();
-    BlocoIndestrutivel BlocoIndestrutivel12 = new BlocoIndestrutivel();
-    BlocoIndestrutivel BlocoIndestrutivel13 = new BlocoIndestrutivel();
-    BlocoIndestrutivel BlocoIndestrutivel14 = new BlocoIndestrutivel();
-    BlocoIndestrutivel BlocoIndestrutivel15 = new BlocoIndestrutivel();
-    BlocoIndestrutivel BlocoIndestrutivel16 = new BlocoIndestrutivel();
-    BlocoIndestrutivel BlocoIndestrutivel17 = new BlocoIndestrutivel();
-    BlocoIndestrutivel BlocoIndestrutivel18 = new BlocoIndestrutivel();
-    BlocoIndestrutivel BlocoIndestrutivel19 = new BlocoIndestrutivel();
-    BlocoIndestrutivel BlocoIndestrutivel20 = new BlocoIndestrutivel();
-    BlocoIndestrutivel BlocoIndestrutivel21 = new BlocoIndestrutivel();
-    BlocoIndestrutivel BlocoIndestrutivel22 = new BlocoIndestrutivel();
-    BlocoIndestrutivel BlocoIndestrutivel23 = new BlocoIndestrutivel();
-    BlocoIndestrutivel BlocoIndestrutivel24 = new BlocoIndestrutivel();
-    BlocoIndestrutivel BlocoIndestrutivel25 = new BlocoIndestrutivel();
-    BlocoIndestrutivel BlocoIndestrutivel26 = new BlocoIndestrutivel();
-    BlocoIndestrutivel BlocoIndestrutivel27 = new BlocoIndestrutivel();
-    BlocoIndestrutivel BlocoIndestrutivel28 = new BlocoIndestrutivel();
-    BlocoIndestrutivel BlocoIndestrutivel29 = new BlocoIndestrutivel();
-    BlocoIndestrutivel BlocoIndestrutivel30 = new BlocoIndestrutivel(); */
-
-    int espacoHorizontalVertical = 80;    
-    int posicaoVerticalInicial = 90;
-    int posicaoHorizontalInicial = 96;
-    int index = 0;
+    final int qtdBlocosIndestrutiveis = 30;
+    BlocoIndestrutivel []blocosIndestrutiveis = new BlocoIndestrutivel[qtdBlocosIndestrutiveis];        
+    int espacoHorizontalVerticalIndestrutivel = 80;    
+    int posicaoVerticalInicialIndestrutivel = 90;
+    int posicaoHorizontalInicialIndestrutivel = 96;
+    int indiceIndestrutivel = 0;
     private void criarBlocosIndestrutiveis(){
         for(int i=0; i<blocosIndestrutiveis.length; i++){
             blocosIndestrutiveis[i] = new BlocoIndestrutivel();                      
@@ -77,12 +47,42 @@ public class Mundo extends World
         
         for(int i=0; i<5; i++){            
             for(int j=0; j<6; j++){
-                addObject( blocosIndestrutiveis[index],
-                    posicaoHorizontalInicial+j*espacoHorizontalVertical , 
-                        posicaoVerticalInicial+i*espacoHorizontalVertical );   
-                index++;
+                addObject( blocosIndestrutiveis[indiceIndestrutivel],
+                    posicaoHorizontalInicialIndestrutivel+j*espacoHorizontalVerticalIndestrutivel, 
+                        posicaoVerticalInicialIndestrutivel+i*espacoHorizontalVerticalIndestrutivel);   
+                indiceIndestrutivel++;
             }             
         }  
+        /* BlocoIndestrutivel BlocoIndestrutivel1 = new BlocoIndestrutivel();
+        BlocoIndestrutivel BlocoIndestrutivel2 = new BlocoIndestrutivel();
+        BlocoIndestrutivel BlocoIndestrutivel3 = new BlocoIndestrutivel();
+        BlocoIndestrutivel BlocoIndestrutivel4 = new BlocoIndestrutivel();
+        BlocoIndestrutivel BlocoIndestrutivel5 = new BlocoIndestrutivel();
+        BlocoIndestrutivel BlocoIndestrutivel6 = new BlocoIndestrutivel();
+        BlocoIndestrutivel BlocoIndestrutivel7 = new BlocoIndestrutivel();
+        BlocoIndestrutivel BlocoIndestrutivel8 = new BlocoIndestrutivel();
+        BlocoIndestrutivel BlocoIndestrutivel9 = new BlocoIndestrutivel();
+        BlocoIndestrutivel BlocoIndestrutivel10 = new BlocoIndestrutivel();
+        BlocoIndestrutivel BlocoIndestrutivel11 = new BlocoIndestrutivel();
+        BlocoIndestrutivel BlocoIndestrutivel12 = new BlocoIndestrutivel();
+        BlocoIndestrutivel BlocoIndestrutivel13 = new BlocoIndestrutivel();
+        BlocoIndestrutivel BlocoIndestrutivel14 = new BlocoIndestrutivel();
+        BlocoIndestrutivel BlocoIndestrutivel15 = new BlocoIndestrutivel();
+        BlocoIndestrutivel BlocoIndestrutivel16 = new BlocoIndestrutivel();
+        BlocoIndestrutivel BlocoIndestrutivel17 = new BlocoIndestrutivel();
+        BlocoIndestrutivel BlocoIndestrutivel18 = new BlocoIndestrutivel();
+        BlocoIndestrutivel BlocoIndestrutivel19 = new BlocoIndestrutivel();
+        BlocoIndestrutivel BlocoIndestrutivel20 = new BlocoIndestrutivel();
+        BlocoIndestrutivel BlocoIndestrutivel21 = new BlocoIndestrutivel();
+        BlocoIndestrutivel BlocoIndestrutivel22 = new BlocoIndestrutivel();
+        BlocoIndestrutivel BlocoIndestrutivel23 = new BlocoIndestrutivel();
+        BlocoIndestrutivel BlocoIndestrutivel24 = new BlocoIndestrutivel();
+        BlocoIndestrutivel BlocoIndestrutivel25 = new BlocoIndestrutivel();
+        BlocoIndestrutivel BlocoIndestrutivel26 = new BlocoIndestrutivel();
+        BlocoIndestrutivel BlocoIndestrutivel27 = new BlocoIndestrutivel();
+        BlocoIndestrutivel BlocoIndestrutivel28 = new BlocoIndestrutivel();
+        BlocoIndestrutivel BlocoIndestrutivel29 = new BlocoIndestrutivel();
+        BlocoIndestrutivel BlocoIndestrutivel30 = new BlocoIndestrutivel(); */
         /* addObject(BlocoIndestrutivel1, 96, 90);
         addObject(BlocoIndestrutivel2, 176, 90);
         addObject(BlocoIndestrutivel3, 256, 90);
@@ -121,11 +121,12 @@ public class Mundo extends World
     
     final int qtdBlocosDestrutiveis = 143;
     BlocoDestrutivel []blocosDestrutiveis = new BlocoDestrutivel[qtdBlocosDestrutiveis];   
-    int espacoHorizontal2 = 40;    
-    int espacoVertical2 = 40;    
-    int posicaoVerticalInicial2 = 52;
-    int posicaoHorizontalInicial2 = 56;
-    int index2 = 0;
+    int espacoHorizontalDestrutivel = 40;    
+    int espacoVerticalDestrutivel = 40;    
+    int posicaoVerticalInicialDestrutivel = 52;
+    int posicaoHorizontalInicialDestrutivel = 56;
+    int indiceDestrutivel = 0;
+    int espacoBombermanSobreviver = 4;
     private void criarBlocosDestrutiveis(){
         for(int i=0; i<blocosDestrutiveis.length; i++){
             blocosDestrutiveis[i] = new BlocoDestrutivel();                    
@@ -134,12 +135,12 @@ public class Mundo extends World
         // posiciona cada bloco na tela automaticamente
         for(int i=0; i<11; i++){            
             for(int j=0; j<13; j++){
-                if(index2 > 4 && index2 < qtdBlocosDestrutiveis-4){ // cria espaço inicial e final para bomberman sobreviver
-                    addObject( blocosDestrutiveis[index2],
-                    posicaoHorizontalInicial2+j*espacoHorizontal2 , 
-                        posicaoVerticalInicial2+i*espacoVertical2 );                   
+                if(indiceDestrutivel > espacoBombermanSobreviver && indiceDestrutivel < qtdBlocosDestrutiveis-espacoBombermanSobreviver){ // cria espaço inicial e final para bomberman sobreviver
+                    addObject( blocosDestrutiveis[indiceDestrutivel],
+                    posicaoHorizontalInicialDestrutivel+j*espacoHorizontalDestrutivel  , 
+                        posicaoVerticalInicialDestrutivel+i*espacoVerticalDestrutivel );                   
                 }
-                index2++;
+                indiceDestrutivel++;
             }             
         } 
                 
