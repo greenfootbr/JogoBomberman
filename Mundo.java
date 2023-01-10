@@ -7,8 +7,7 @@
  * @version (a version number or a date)
  */
 public class Mundo extends World
-{
-    
+{        
     Bomberman marlos = new Bomberman("right", "left", "down", "up", "space");
     Bomberman douglas = new Bomberman("d", "a", "s", "w", "r");
     BarraVertical barra = new BarraVertical();
@@ -17,7 +16,8 @@ public class Mundo extends World
     BarraHorizontal barra2 = new BarraHorizontal();
     BarraHorizontal barra3 = new BarraHorizontal();
          
-    BlocoIndestrutivel BlocoIndestrutivel1 = new BlocoIndestrutivel();
+    BlocoIndestrutivel []blocosIndestrutiveis = new BlocoIndestrutivel[30];        
+    /* BlocoIndestrutivel BlocoIndestrutivel1 = new BlocoIndestrutivel();
     BlocoIndestrutivel BlocoIndestrutivel2 = new BlocoIndestrutivel();
     BlocoIndestrutivel BlocoIndestrutivel3 = new BlocoIndestrutivel();
     BlocoIndestrutivel BlocoIndestrutivel4 = new BlocoIndestrutivel();
@@ -46,15 +46,8 @@ public class Mundo extends World
     BlocoIndestrutivel BlocoIndestrutivel27 = new BlocoIndestrutivel();
     BlocoIndestrutivel BlocoIndestrutivel28 = new BlocoIndestrutivel();
     BlocoIndestrutivel BlocoIndestrutivel29 = new BlocoIndestrutivel();
-    BlocoIndestrutivel BlocoIndestrutivel30 = new BlocoIndestrutivel();
+    BlocoIndestrutivel BlocoIndestrutivel30 = new BlocoIndestrutivel(); */
  
-    
-
-     
-    /**
-     * Constructor for objects of class Terra.
-     * 
-     */
     public Mundo()
     {    
 
@@ -66,9 +59,8 @@ public class Mundo extends World
        
         
         Cenario();
-        CriarBlocoIndestrutivels();
-        
-        
+        CriarBlocosIndestrutivels();
+                
         addObject(douglas,55,45);
         addObject(marlos,534,435);
         addObject(barra, 584, 252);
@@ -94,8 +86,24 @@ public class Mundo extends World
       
     }
     
-    private void CriarBlocoIndestrutivels(){
-        addObject(BlocoIndestrutivel1, 96, 90);
+    int espacoHorizontalVertical = 80;    
+    int posicaoVerticalInicial = 90;
+    int posicaoHorizontalInicial = 96;
+    int index = 0;
+    private void CriarBlocosIndestrutivels(){
+        for(int i=0; i<30; i++){
+            blocosIndestrutiveis[i] = new BlocoIndestrutivel();                      
+        }
+        
+        for(int i=0; i<5; i++){            
+            for(int j=0; j<6; j++){
+                addObject( blocosIndestrutiveis[index],
+                    posicaoHorizontalInicial+j*espacoHorizontalVertical , 
+                        posicaoVerticalInicial+i*espacoHorizontalVertical );   
+                index++;
+            }             
+        }  
+        /* addObject(BlocoIndestrutivel1, 96, 90);
         addObject(BlocoIndestrutivel2, 176, 90);
         addObject(BlocoIndestrutivel3, 256, 90);
         addObject(BlocoIndestrutivel4, 336, 90);
@@ -128,7 +136,7 @@ public class Mundo extends World
         addObject(BlocoIndestrutivel27, 256, 410);
         addObject(BlocoIndestrutivel28, 336, 410);
         addObject(BlocoIndestrutivel29, 416, 410);
-        addObject(BlocoIndestrutivel30, 496, 410);
+        addObject(BlocoIndestrutivel30, 496, 410);*/
     }
     private void Cenario(){
         BlocoDestrutivel BlocoDestrutivel = new BlocoDestrutivel();
