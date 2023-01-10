@@ -7,15 +7,7 @@
  * @version (a version number or a date)
  */
 public class Mundo extends World
-{        
-    Bomberman marlos = new Bomberman("right", "left", "down", "up", "space");
-    Bomberman douglas = new Bomberman("d", "a", "s", "w", "r");
-    BarraVertical barra = new BarraVertical();
-        
-    BarraVertical barra1 = new BarraVertical();
-    BarraHorizontal barra2 = new BarraHorizontal();
-    BarraHorizontal barra3 = new BarraHorizontal();
-         
+{                 
     BlocoIndestrutivel []blocosIndestrutiveis = new BlocoIndestrutivel[30];        
     /* BlocoIndestrutivel BlocoIndestrutivel1 = new BlocoIndestrutivel();
     BlocoIndestrutivel BlocoIndestrutivel2 = new BlocoIndestrutivel();
@@ -50,47 +42,35 @@ public class Mundo extends World
  
     public Mundo()
     {    
-
         super(590, 500, 1); 
         
-
         Greenfoot.start();
         Greenfoot.playSound("05-level-1.mp3");
-       
-        
-        Cenario();
-        CriarBlocosIndestrutivels();
-                
-        addObject(douglas,55,45);
-        addObject(marlos,534,435);
-        addObject(barra, 584, 252);
-        addObject(barra1,7,252);
-        addObject(barra2, 297,4);
-        addObject(barra3, 297, 494);
-       
-      
-
-
-        
+               
+        criarBlocosDestrutiveis();
+        criarBlocosIndestrutiveis();          
+             
+        criarPersonagens();
+        criarBordasDoCenario(); 
     }
     
-    
-    public void act(){
-      
-       if(marlos.getControle()){
-           
-        }
-       if(douglas.getControle()){
-           
-        }
-      
+    public void criarPersonagens(){
+        addObject(new Bomberman("d", "a", "s", "w", "r"), 55, 45);
+        addObject(new Bomberman("right", "left", "down", "up", "space"), 534, 435);
     }
     
+    public void criarBordasDoCenario(){
+        addObject(new BarraVertical(), 584, 252);
+        addObject(new BarraVertical(), 7, 252);
+        addObject(new BarraHorizontal(), 297, 4);
+        addObject(new BarraHorizontal(), 297, 494);
+    }
+
     int espacoHorizontalVertical = 80;    
     int posicaoVerticalInicial = 90;
     int posicaoHorizontalInicial = 96;
     int index = 0;
-    private void CriarBlocosIndestrutivels(){
+    private void criarBlocosIndestrutiveis(){
         for(int i=0; i<30; i++){
             blocosIndestrutiveis[i] = new BlocoIndestrutivel();                      
         }
@@ -138,7 +118,8 @@ public class Mundo extends World
         addObject(BlocoIndestrutivel29, 416, 410);
         addObject(BlocoIndestrutivel30, 496, 410);*/
     }
-    private void Cenario(){
+    
+    private void criarBlocosDestrutiveis(){
         BlocoDestrutivel BlocoDestrutivel = new BlocoDestrutivel();
         addObject(BlocoDestrutivel, 97, 54);
         BlocoDestrutivel.setLocation(98, 52);
@@ -401,10 +382,7 @@ public class Mundo extends World
         BlocoDestrutivel70.setLocation(534, 370);
         BlocoDestrutivel69.setLocation(533, 409);
         BlocoDestrutivel70.setLocation(533, 370);    
-    }
-   
-    
-    
+    }    
 }
 
 

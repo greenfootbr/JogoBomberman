@@ -5,9 +5,11 @@ comment1.params=
 comment1.target=Mundo()
 comment1.text=\ BlocoIndestrutivel\ BlocoIndestrutivel1\ \=\ new\ BlocoIndestrutivel();\r\n\ \ \ \ BlocoIndestrutivel\ BlocoIndestrutivel2\ \=\ new\ BlocoIndestrutivel();\r\n\ \ \ \ BlocoIndestrutivel\ BlocoIndestrutivel3\ \=\ new\ BlocoIndestrutivel();\r\n\ \ \ \ BlocoIndestrutivel\ BlocoIndestrutivel4\ \=\ new\ BlocoIndestrutivel();\r\n\ \ \ \ BlocoIndestrutivel\ BlocoIndestrutivel5\ \=\ new\ BlocoIndestrutivel();\r\n\ \ \ \ BlocoIndestrutivel\ BlocoIndestrutivel6\ \=\ new\ BlocoIndestrutivel();\r\n\ \ \ \ BlocoIndestrutivel\ BlocoIndestrutivel7\ \=\ new\ BlocoIndestrutivel();\r\n\ \ \ \ BlocoIndestrutivel\ BlocoIndestrutivel8\ \=\ new\ BlocoIndestrutivel();\r\n\ \ \ \ BlocoIndestrutivel\ BlocoIndestrutivel9\ \=\ new\ BlocoIndestrutivel();\r\n\ \ \ \ BlocoIndestrutivel\ BlocoIndestrutivel10\ \=\ new\ BlocoIndestrutivel();\r\n\ \ \ \ BlocoIndestrutivel\ BlocoIndestrutivel11\ \=\ new\ BlocoIndestrutivel();\r\n\ \ \ \ BlocoIndestrutivel\ BlocoIndestrutivel12\ \=\ new\ BlocoIndestrutivel();\r\n\ \ \ \ BlocoIndestrutivel\ BlocoIndestrutivel13\ \=\ new\ BlocoIndestrutivel();\r\n\ \ \ \ BlocoIndestrutivel\ BlocoIndestrutivel14\ \=\ new\ BlocoIndestrutivel();\r\n\ \ \ \ BlocoIndestrutivel\ BlocoIndestrutivel15\ \=\ new\ BlocoIndestrutivel();\r\n\ \ \ \ BlocoIndestrutivel\ BlocoIndestrutivel16\ \=\ new\ BlocoIndestrutivel();\r\n\ \ \ \ BlocoIndestrutivel\ BlocoIndestrutivel17\ \=\ new\ BlocoIndestrutivel();\r\n\ \ \ \ BlocoIndestrutivel\ BlocoIndestrutivel18\ \=\ new\ BlocoIndestrutivel();\r\n\ \ \ \ BlocoIndestrutivel\ BlocoIndestrutivel19\ \=\ new\ BlocoIndestrutivel();\r\n\ \ \ \ BlocoIndestrutivel\ BlocoIndestrutivel20\ \=\ new\ BlocoIndestrutivel();\r\n\ \ \ \ BlocoIndestrutivel\ BlocoIndestrutivel21\ \=\ new\ BlocoIndestrutivel();\r\n\ \ \ \ BlocoIndestrutivel\ BlocoIndestrutivel22\ \=\ new\ BlocoIndestrutivel();\r\n\ \ \ \ BlocoIndestrutivel\ BlocoIndestrutivel23\ \=\ new\ BlocoIndestrutivel();\r\n\ \ \ \ BlocoIndestrutivel\ BlocoIndestrutivel24\ \=\ new\ BlocoIndestrutivel();\r\n\ \ \ \ BlocoIndestrutivel\ BlocoIndestrutivel25\ \=\ new\ BlocoIndestrutivel();\r\n\ \ \ \ BlocoIndestrutivel\ BlocoIndestrutivel26\ \=\ new\ BlocoIndestrutivel();\r\n\ \ \ \ BlocoIndestrutivel\ BlocoIndestrutivel27\ \=\ new\ BlocoIndestrutivel();\r\n\ \ \ \ BlocoIndestrutivel\ BlocoIndestrutivel28\ \=\ new\ BlocoIndestrutivel();\r\n\ \ \ \ BlocoIndestrutivel\ BlocoIndestrutivel29\ \=\ new\ BlocoIndestrutivel();\r\nBlocoIndestrutivel\ BlocoIndestrutivel30\ \=\ new\ BlocoIndestrutivel();
 comment2.params=
-comment2.target=void\ act()
+comment2.target=void\ criarPersonagens()
 comment3.params=
-comment3.target=void\ CriarBlocosIndestrutivels()
+comment3.target=void\ criarBordasDoCenario()
 comment4.params=
-comment4.target=void\ Cenario()
-numComments=5
+comment4.target=void\ criarBlocosIndestrutiveis()
+comment5.params=
+comment5.target=void\ criarBlocosDestrutiveis()
+numComments=6
