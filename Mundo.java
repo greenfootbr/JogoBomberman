@@ -7,450 +7,420 @@
  * @version (a version number or a date)
  */
 public class Mundo extends World
-{
-    
-    Bomberman marlos = new Bomberman("right", "left", "down", "up", "space");
-    Bomberman douglas = new Bomberman("d", "a", "s", "w", "r");
-    Barra_Lateral barra = new Barra_Lateral();
-    
-   
-    
-    //C:\Users\allen\Documents\Engenharia\Allen - Bomberman\sounds\05-level-1.mp3
-    Barra_Lateral barra1 = new Barra_Lateral();
-    Barra_H barra2 = new Barra_H();
-    Barra_H barra3 = new Barra_H();
-    
-    /*Destroer destroer1 = new Destroer();
-    Destroer destroer2 = new Destroer();
-    Destroer destroer3 = new Destroer();
-    Destroer destroer4 = new Destroer();
-    Destroer destroer5 = new Destroer();
-    Destroer destroer6 = new Destroer();
-    Destroer destroer7 = new Destroer();
-    Destroer destroer8 = new Destroer();
-    Destroer destroer9 = new Destroer();
-    Destroer destroer10 = new Destroer();
-    Destroer destroer11 = new Destroer();
-    Destroer destroer12 = new Destroer();
-    Destroer destroer13 = new Destroer();
-    Destroer destroer14 = new Destroer();
-    Destroer destroer15 = new Destroer();
-    Destroer destroer16 = new Destroer();
-    Destroer destroer17 = new Destroer();
-    Destroer destroer18 = new Destroer();
-    Destroer destroer19 = new Destroer();
-    Destroer destroer20 = new Destroer();
-    Destroer destroer21 = new Destroer();
-    Destroer destroer22= new Destroer();
-    Destroer destroer23= new Destroer();
-    Destroer destroer24= new Destroer();
-    Destroer destroer25 = new Destroer();
-    */
-    
-    
-    
-  
-    Bloco bloco1 = new Bloco();
-    Bloco bloco2 = new Bloco();
-    Bloco bloco3 = new Bloco();
-    Bloco bloco4 = new Bloco();
-    Bloco bloco5 = new Bloco();
-    Bloco bloco6 = new Bloco();
-    Bloco bloco7 = new Bloco();
-    Bloco bloco8 = new Bloco();
-    Bloco bloco9 = new Bloco();
-    Bloco bloco10 = new Bloco();
-    Bloco bloco11 = new Bloco();
-    Bloco bloco12 = new Bloco();
-    Bloco bloco13 = new Bloco();
-    Bloco bloco14 = new Bloco();
-    Bloco bloco15 = new Bloco();
-    Bloco bloco16 = new Bloco();
-    Bloco bloco17 = new Bloco();
-    Bloco bloco18 = new Bloco();
-    Bloco bloco19 = new Bloco();
-    Bloco bloco20 = new Bloco();
-    Bloco bloco21 = new Bloco();
-    Bloco bloco22 = new Bloco();
-    Bloco bloco23 = new Bloco();
-    Bloco bloco24 = new Bloco();
-    Bloco bloco25 = new Bloco();
-    Bloco bloco26 = new Bloco();
-    Bloco bloco27 = new Bloco();
-    Bloco bloco28 = new Bloco();
-    Bloco bloco29 = new Bloco();
-    Bloco bloco30 = new Bloco();
- 
-    
-
-     
-    /**
-     * Constructor for objects of class Terra.
-     * 
-     */
+{                 
     public Mundo()
     {    
-
         super(590, 500, 1); 
         
-
         Greenfoot.start();
         Greenfoot.playSound("05-level-1.mp3");
-       
+                       
+        criarItensEspeciais();
         
-        /*addObject(destroer1, 215,207);
-        addObject(destroer2, 98,130);
-        addObject(destroer3, 136,91);
-        addObject(destroer4, 136,130);
-        addObject(destroer5, 215,91);
-        addObject(destroer6, 294,91);
-        addObject(destroer7, 373,91);
-        addObject(destroer8, 452,91);
-        addObject(destroer9, 531,91);
-        
-        addObject(destroer10, 176,130);
-        addObject(destroer11, 216,130);
-        addObject(destroer12, 256,130);
-        addObject(destroer13, 296,130);
-        addObject(destroer14, 336,130);
-        addObject(destroer15, 375,130);
-        addObject(destroer16, 415,130);
-        addObject(destroer17, 531,130);
-        */
-
-        
-        Cenario();
-        CriarBlocos();
-        
-        
-        addObject(douglas,55,45);
-        addObject(marlos,534,435);
-        addObject(barra, 584, 252);
-        addObject(barra1,7,252);
-        addObject(barra2, 297,4);
-        addObject(barra3, 297, 494);
-       
-      
-
-
-        
+        criarBlocosDestrutiveis();   
+        criarBlocosIndestrutiveis();            
+             
+        criarPersonagens();
+        criarBordasDoCenario(); 
     }
     
+    public void criarItensEspeciais(){
+        addObject(new MaisVelocidade(), 295, 210);        
+        addObject(new MaisVelocidade(), 215, 330);        
+        addObject(new MaisVelocidade(), 375, 130);        
+    }
+
+    public void criarPersonagens(){
+        addObject(new Bomberman("d", "a", "s", "w", "r"), 55, 45);
+        addObject(new Bomberman("right", "left", "down", "up", "space"), 534, 435);
+    }
     
-    public void act(){
-      
-       if(marlos.getControle()){
-           
+    public void criarBordasDoCenario(){
+        addObject(new BarraVertical(), 584, 252);
+        addObject(new BarraVertical(), 7, 252);
+        addObject(new BarraHorizontal(), 297, 4);
+        addObject(new BarraHorizontal(), 297, 494);
+    }
+    
+    final int qtdBlocosIndestrutiveis = 30;
+    BlocoIndestrutivel []blocosIndestrutiveis = new BlocoIndestrutivel[qtdBlocosIndestrutiveis];        
+    int espacoHorizontalVerticalIndestrutivel = 80;    
+    int posicaoVerticalInicialIndestrutivel = 90;
+    int posicaoHorizontalInicialIndestrutivel = 96;
+    int indiceIndestrutivel = 0;
+    private void criarBlocosIndestrutiveis(){
+        for(int i=0; i<blocosIndestrutiveis.length; i++){
+            blocosIndestrutiveis[i] = new BlocoIndestrutivel();                      
         }
-       if(douglas.getControle()){
-           
+        
+        for(int i=0; i<5; i++){            
+            for(int j=0; j<6; j++){
+                addObject( blocosIndestrutiveis[indiceIndestrutivel],
+                    posicaoHorizontalInicialIndestrutivel+j*espacoHorizontalVerticalIndestrutivel, 
+                        posicaoVerticalInicialIndestrutivel+i*espacoHorizontalVerticalIndestrutivel);   
+                indiceIndestrutivel++;
+            }             
+        }  
+        /* BlocoIndestrutivel BlocoIndestrutivel1 = new BlocoIndestrutivel();
+        BlocoIndestrutivel BlocoIndestrutivel2 = new BlocoIndestrutivel();
+        BlocoIndestrutivel BlocoIndestrutivel3 = new BlocoIndestrutivel();
+        BlocoIndestrutivel BlocoIndestrutivel4 = new BlocoIndestrutivel();
+        BlocoIndestrutivel BlocoIndestrutivel5 = new BlocoIndestrutivel();
+        BlocoIndestrutivel BlocoIndestrutivel6 = new BlocoIndestrutivel();
+        BlocoIndestrutivel BlocoIndestrutivel7 = new BlocoIndestrutivel();
+        BlocoIndestrutivel BlocoIndestrutivel8 = new BlocoIndestrutivel();
+        BlocoIndestrutivel BlocoIndestrutivel9 = new BlocoIndestrutivel();
+        BlocoIndestrutivel BlocoIndestrutivel10 = new BlocoIndestrutivel();
+        BlocoIndestrutivel BlocoIndestrutivel11 = new BlocoIndestrutivel();
+        BlocoIndestrutivel BlocoIndestrutivel12 = new BlocoIndestrutivel();
+        BlocoIndestrutivel BlocoIndestrutivel13 = new BlocoIndestrutivel();
+        BlocoIndestrutivel BlocoIndestrutivel14 = new BlocoIndestrutivel();
+        BlocoIndestrutivel BlocoIndestrutivel15 = new BlocoIndestrutivel();
+        BlocoIndestrutivel BlocoIndestrutivel16 = new BlocoIndestrutivel();
+        BlocoIndestrutivel BlocoIndestrutivel17 = new BlocoIndestrutivel();
+        BlocoIndestrutivel BlocoIndestrutivel18 = new BlocoIndestrutivel();
+        BlocoIndestrutivel BlocoIndestrutivel19 = new BlocoIndestrutivel();
+        BlocoIndestrutivel BlocoIndestrutivel20 = new BlocoIndestrutivel();
+        BlocoIndestrutivel BlocoIndestrutivel21 = new BlocoIndestrutivel();
+        BlocoIndestrutivel BlocoIndestrutivel22 = new BlocoIndestrutivel();
+        BlocoIndestrutivel BlocoIndestrutivel23 = new BlocoIndestrutivel();
+        BlocoIndestrutivel BlocoIndestrutivel24 = new BlocoIndestrutivel();
+        BlocoIndestrutivel BlocoIndestrutivel25 = new BlocoIndestrutivel();
+        BlocoIndestrutivel BlocoIndestrutivel26 = new BlocoIndestrutivel();
+        BlocoIndestrutivel BlocoIndestrutivel27 = new BlocoIndestrutivel();
+        BlocoIndestrutivel BlocoIndestrutivel28 = new BlocoIndestrutivel();
+        BlocoIndestrutivel BlocoIndestrutivel29 = new BlocoIndestrutivel();
+        BlocoIndestrutivel BlocoIndestrutivel30 = new BlocoIndestrutivel(); */
+        /* addObject(BlocoIndestrutivel1, 96, 90);
+        addObject(BlocoIndestrutivel2, 176, 90);
+        addObject(BlocoIndestrutivel3, 256, 90);
+        addObject(BlocoIndestrutivel4, 336, 90);
+        addObject(BlocoIndestrutivel5, 416, 90);
+        addObject(BlocoIndestrutivel6, 496, 90);
+        
+        addObject(BlocoIndestrutivel7, 96, 170);
+        addObject(BlocoIndestrutivel8, 176, 170);
+        addObject(BlocoIndestrutivel9, 256, 170);
+        addObject(BlocoIndestrutivel10, 336, 170);
+        addObject(BlocoIndestrutivel11, 416, 170);
+        addObject(BlocoIndestrutivel12, 496, 170);
+        
+        addObject(BlocoIndestrutivel13, 96, 250);
+        addObject(BlocoIndestrutivel14, 176, 250);
+        addObject(BlocoIndestrutivel15, 256, 250);
+        addObject(BlocoIndestrutivel16, 336, 250);
+        addObject(BlocoIndestrutivel17, 416, 250);
+        addObject(BlocoIndestrutivel18, 496, 250);
+        
+        addObject(BlocoIndestrutivel19, 96, 330);
+        addObject(BlocoIndestrutivel20, 176, 330);
+        addObject(BlocoIndestrutivel21, 256, 330);
+        addObject(BlocoIndestrutivel22, 336, 330);
+        addObject(BlocoIndestrutivel23, 416, 330);
+        addObject(BlocoIndestrutivel24, 496, 330);
+        
+        addObject(BlocoIndestrutivel25, 96, 410);
+        addObject(BlocoIndestrutivel26, 176, 410);
+        addObject(BlocoIndestrutivel27, 256, 410);
+        addObject(BlocoIndestrutivel28, 336, 410);
+        addObject(BlocoIndestrutivel29, 416, 410);
+        addObject(BlocoIndestrutivel30, 496, 410);*/
+    }
+    
+    final int qtdBlocosDestrutiveis = 143;
+    BlocoDestrutivel []blocosDestrutiveis = new BlocoDestrutivel[qtdBlocosDestrutiveis];   
+    int espacoHorizontalDestrutivel = 40;    
+    int espacoVerticalDestrutivel = 40;    
+    int posicaoVerticalInicialDestrutivel = 52;
+    int posicaoHorizontalInicialDestrutivel = 56;
+    int indiceDestrutivel = 0;
+    int espacoBombermanSobreviver = 4;
+    private void criarBlocosDestrutiveis(){
+        for(int i=0; i<blocosDestrutiveis.length; i++){
+            blocosDestrutiveis[i] = new BlocoDestrutivel();                    
+        }   
+        
+        // posiciona cada bloco na tela automaticamente
+        for(int i=0; i<11; i++){            
+            for(int j=0; j<13; j++){
+                if(indiceDestrutivel > espacoBombermanSobreviver && indiceDestrutivel < qtdBlocosDestrutiveis-espacoBombermanSobreviver){ // cria espaço inicial e final para bomberman sobreviver
+                    addObject( blocosDestrutiveis[indiceDestrutivel],
+                    posicaoHorizontalInicialDestrutivel+j*espacoHorizontalDestrutivel  , 
+                        posicaoVerticalInicialDestrutivel+i*espacoVerticalDestrutivel );                   
+                }
+                indiceDestrutivel++;
+            }             
+        } 
+                
+        // cria buracos na tela
+        for(int i=0; i<20; i++){ 
+             int numAleatorio = Greenfoot.getRandomNumber(qtdBlocosDestrutiveis);
+             removeObject( blocosDestrutiveis[numAleatorio] );   
         }
-      
-    }
-    
-    private void CriarBlocos(){
-        addObject(bloco1, 96, 90);
-        addObject(bloco2, 176, 90);
-        addObject(bloco3, 256, 90);
-        addObject(bloco4, 336, 90);
-        addObject(bloco5, 416, 90);
-        addObject(bloco6, 496, 90);
         
-        addObject(bloco7, 96, 170);
-        addObject(bloco8, 176, 170);
-        addObject(bloco9, 256, 170);
-        addObject(bloco10, 336, 170);
-        addObject(bloco11, 416, 170);
-        addObject(bloco12, 496, 170);
+        /*BlocoDestrutivel BlocoDestrutivel = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel, 97, 54);
+        BlocoDestrutivel.setLocation(98, 52);
+        BlocoDestrutivel BlocoDestrutivel2 = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel2, 63, 134);
+        BlocoDestrutivel2.setLocation(58, 131);
+        BlocoDestrutivel.setLocation(137, 52);
+        BlocoDestrutivel BlocoDestrutivel3 = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel3, 251, 189);
+        BlocoDestrutivel BlocoDestrutivel4 = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel4, 284, 280);
+        BlocoDestrutivel BlocoDestrutivel5 = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel5, 388, 281);
+        BlocoDestrutivel BlocoDestrutivel6 = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel6, 325, 359);
+        BlocoDestrutivel BlocoDestrutivel7 = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel7, 441, 402);
+        BlocoDestrutivel BlocoDestrutivel8 = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel8, 373, 201);
+        BlocoDestrutivel BlocoDestrutivel9 = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel9, 414, 127);
+        BlocoDestrutivel BlocoDestrutivel10 = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel10, 475, 193);
+        BlocoDestrutivel BlocoDestrutivel11 = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel11, 448, 286);
+        BlocoDestrutivel BlocoDestrutivel12 = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel12, 389, 354);
+        BlocoDestrutivel BlocoDestrutivel13 = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel13, 212, 340);
+        BlocoDestrutivel BlocoDestrutivel14 = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel14, 326, 420);
+        BlocoDestrutivel BlocoDestrutivel15 = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel15, 157, 416);
+        BlocoDestrutivel BlocoDestrutivel16 = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel16, 79, 358);
+        BlocoDestrutivel BlocoDestrutivel17 = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel17, 70, 321);
+        BlocoDestrutivel3.setLocation(98, 131);
+        BlocoDestrutivel8.setLocation(138, 131);
+        BlocoDestrutivel9.setLocation(137, 92);
+        BlocoDestrutivel10.setLocation(179, 132);
+        BlocoDestrutivel4.setLocation(177, 52);
+        BlocoDestrutivel10.setLocation(176, 131);
+        BlocoDestrutivel17.setLocation(57, 171);
+        BlocoDestrutivel16.setLocation(137, 172);
+        BlocoDestrutivel5.setLocation(217, 52);
+        BlocoDestrutivel6.setLocation(216, 130);
+        BlocoDestrutivel13.setLocation(216, 171);
+        BlocoDestrutivel6.setLocation(216, 131);
+        BlocoDestrutivel6.getX();
+        BlocoDestrutivel6.getY();
+        BlocoDestrutivel11.setLocation(257, 132);
+        BlocoDestrutivel12.setLocation(295, 132);
+        BlocoDestrutivel11.setLocation(255, 132);
+        BlocoDestrutivel14.setLocation(296, 171);
+        BlocoDestrutivel15.setLocation(216, 210);
+        BlocoDestrutivel7.setLocation(137, 213);
+        BlocoDestrutivel BlocoDestrutivel18 = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel18, 183, 216);
+        BlocoDestrutivel18.setLocation(176, 211);
+        BlocoDestrutivel BlocoDestrutivel19 = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel19, 399, 280);
+        BlocoDestrutivel BlocoDestrutivel20 = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel20, 486, 394);
+        BlocoDestrutivel BlocoDestrutivel21 = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel21, 310, 389);
+        BlocoDestrutivel BlocoDestrutivel22 = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel22, 452, 350);
+        BlocoDestrutivel BlocoDestrutivel23 = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel23, 366, 371);
+        BlocoDestrutivel BlocoDestrutivel24 = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel24, 456, 208);
+        BlocoDestrutivel BlocoDestrutivel25 = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel25, 240, 298);
+        BlocoDestrutivel BlocoDestrutivel26 = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel26, 368, 170);
+        BlocoDestrutivel BlocoDestrutivel27 = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel27, 436, 211);
+        BlocoDestrutivel BlocoDestrutivel28 = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel28, 344, 216);
+        BlocoDestrutivel BlocoDestrutivel29 = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel29, 329, 305);
+        BlocoDestrutivel BlocoDestrutivel30 = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel30, 476, 299);
+        BlocoDestrutivel BlocoDestrutivel31 = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel31, 374, 346);
+        BlocoDestrutivel30.setLocation(296, 210);
+        BlocoDestrutivel28.setLocation(256, 209);
+        BlocoDestrutivel27.setLocation(337, 209);
+        BlocoDestrutivel19.setLocation(397, 223);
+        BlocoDestrutivel7.setLocation(137, 212);
+        BlocoDestrutivel18.setLocation(176, 212);
+        BlocoDestrutivel15.setLocation(217, 211);
+        BlocoDestrutivel28.setLocation(256, 211);
+        BlocoDestrutivel30.setLocation(300, 211);
+        BlocoDestrutivel19.setLocation(376, 210);
+        BlocoDestrutivel30.setLocation(296, 210);
+        BlocoDestrutivel15.setLocation(214, 211);
+        BlocoDestrutivel27.setLocation(335, 209);
+        BlocoDestrutivel26.setLocation(377, 170);
+        BlocoDestrutivel24.setLocation(375, 128);
+        BlocoDestrutivel29.setLocation(296, 252);
+        BlocoDestrutivel25.setLocation(215, 252);
+        BlocoDestrutivel31.setLocation(295, 289);
+        BlocoDestrutivel23.setLocation(336, 291);
+        BlocoDestrutivel22.setLocation(377, 292);
+        BlocoDestrutivel20.setLocation(255, 289);
+        BlocoDestrutivel21.setLocation(295, 369);
+        BlocoDestrutivel BlocoDestrutivel32 = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel32, 377, 370);
+        BlocoDestrutivel BlocoDestrutivel33 = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel33, 338, 368);
+        BlocoDestrutivel BlocoDestrutivel34 = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel34, 377, 413);
+        BlocoDestrutivel BlocoDestrutivel35 = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel35, 419, 369);
+        BlocoDestrutivel BlocoDestrutivel36 = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel36, 459, 291);
+        BlocoDestrutivel BlocoDestrutivel37 = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel37, 457, 329);
+        BlocoDestrutivel BlocoDestrutivel38 = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel38, 459, 373);
+        BlocoDestrutivel BlocoDestrutivel39 = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel39, 461, 413);
+        BlocoDestrutivel BlocoDestrutivel40 = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel40, 456, 243);
+        BlocoDestrutivel BlocoDestrutivel41 = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel41, 457, 209);
+        BlocoDestrutivel BlocoDestrutivel42 = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel42, 459, 131);
+        BlocoDestrutivel BlocoDestrutivel43 = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel43, 458, 171);
+        BlocoDestrutivel BlocoDestrutivel44 = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel44, 459, 54);
+        BlocoDestrutivel BlocoDestrutivel45 = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel45, 458, 87);
+        BlocoDestrutivel BlocoDestrutivel46 = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel46, 420, 47);
+        BlocoDestrutivel BlocoDestrutivel47 = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel47, 388, 49);
+        BlocoDestrutivel BlocoDestrutivel48 = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel48, 353, 49);
+        BlocoDestrutivel BlocoDestrutivel49 = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel49, 321, 50);
+        BlocoDestrutivel BlocoDestrutivel50 = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel50, 286, 50);
+        BlocoDestrutivel BlocoDestrutivel51 = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel51, 297, 86);
+        BlocoDestrutivel BlocoDestrutivel52 = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel52, 137, 286);
+        BlocoDestrutivel BlocoDestrutivel53 = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel53, 141, 333);
+        BlocoDestrutivel BlocoDestrutivel54 = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel54, 134, 368);
+        BlocoDestrutivel BlocoDestrutivel55 = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel55, 142, 411);
+        BlocoDestrutivel BlocoDestrutivel56 = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel56, 175, 370);
+        BlocoDestrutivel BlocoDestrutivel57 = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel57, 216, 370);
+        BlocoDestrutivel BlocoDestrutivel58 = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel58, 219, 335);
+        BlocoDestrutivel BlocoDestrutivel59 = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel59, 218, 292);
+        BlocoDestrutivel BlocoDestrutivel60 = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel60, 179, 291);
+        BlocoDestrutivel BlocoDestrutivel61 = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel61, 304, 449);
+        BlocoDestrutivel BlocoDestrutivel62 = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel62, 263, 448);
+        BlocoDestrutivel BlocoDestrutivel63 = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel63, 219, 453);
+        BlocoDestrutivel BlocoDestrutivel64 = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel64, 176, 452);
+        BlocoDestrutivel BlocoDestrutivel65 = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel65, 128, 453);
+        BlocoDestrutivel BlocoDestrutivel66 = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel66, 339, 450);
+        BlocoDestrutivel BlocoDestrutivel67 = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel67, 377, 450);
         
-        addObject(bloco13, 96, 250);
-        addObject(bloco14, 176, 250);
-        addObject(bloco15, 256, 250);
-        addObject(bloco16, 336, 250);
-        addObject(bloco17, 416, 250);
-        addObject(bloco18, 496, 250);
-        
-        addObject(bloco19, 96, 330);
-        addObject(bloco20, 176, 330);
-        addObject(bloco21, 256, 330);
-        addObject(bloco22, 336, 330);
-        addObject(bloco23, 416, 330);
-        addObject(bloco24, 496, 330);
-        
-        addObject(bloco25, 96, 410);
-        addObject(bloco26, 176, 410);
-        addObject(bloco27, 256, 410);
-        addObject(bloco28, 336, 410);
-        addObject(bloco29, 416, 410);
-        addObject(bloco30, 496, 410);
-    }
-    private void Cenario(){
-        Destroyer destroyer = new Destroyer();
-        addObject(destroyer, 97, 54);
-        destroyer.setLocation(98, 52);
-        Destroyer destroyer2 = new Destroyer();
-        addObject(destroyer2, 63, 134);
-        destroyer2.setLocation(58, 131);
-        destroyer.setLocation(137, 52);
-        Destroyer destroyer3 = new Destroyer();
-        addObject(destroyer3, 251, 189);
-        Destroyer destroyer4 = new Destroyer();
-        addObject(destroyer4, 284, 280);
-        Destroyer destroyer5 = new Destroyer();
-        addObject(destroyer5, 388, 281);
-        Destroyer destroyer6 = new Destroyer();
-        addObject(destroyer6, 325, 359);
-        Destroyer destroyer7 = new Destroyer();
-        addObject(destroyer7, 441, 402);
-        Destroyer destroyer8 = new Destroyer();
-        addObject(destroyer8, 373, 201);
-        Destroyer destroyer9 = new Destroyer();
-        addObject(destroyer9, 414, 127);
-        Destroyer destroyer10 = new Destroyer();
-        addObject(destroyer10, 475, 193);
-        Destroyer destroyer11 = new Destroyer();
-        addObject(destroyer11, 448, 286);
-        Destroyer destroyer12 = new Destroyer();
-        addObject(destroyer12, 389, 354);
-        Destroyer destroyer13 = new Destroyer();
-        addObject(destroyer13, 212, 340);
-        Destroyer destroyer14 = new Destroyer();
-        addObject(destroyer14, 326, 420);
-        Destroyer destroyer15 = new Destroyer();
-        addObject(destroyer15, 157, 416);
-        Destroyer destroyer16 = new Destroyer();
-        addObject(destroyer16, 79, 358);
-        Destroyer destroyer17 = new Destroyer();
-        addObject(destroyer17, 70, 321);
-        destroyer3.setLocation(98, 131);
-        destroyer8.setLocation(138, 131);
-        destroyer9.setLocation(137, 92);
-        destroyer10.setLocation(179, 132);
-        destroyer4.setLocation(177, 52);
-        destroyer10.setLocation(176, 131);
-        destroyer17.setLocation(57, 171);
-        destroyer16.setLocation(137, 172);
-        destroyer5.setLocation(217, 52);
-        destroyer6.setLocation(216, 130);
-        destroyer13.setLocation(216, 171);
-        destroyer6.setLocation(216, 131);
-        destroyer6.getX();
-        destroyer6.getY();
-        destroyer11.setLocation(257, 132);
-        destroyer12.setLocation(295, 132);
-        destroyer11.setLocation(255, 132);
-        destroyer14.setLocation(296, 171);
-        destroyer15.setLocation(216, 210);
-        destroyer7.setLocation(137, 213);
-        Destroyer destroyer18 = new Destroyer();
-        addObject(destroyer18, 183, 216);
-        destroyer18.setLocation(176, 211);
-        Destroyer destroyer19 = new Destroyer();
-        addObject(destroyer19, 399, 280);
-        Destroyer destroyer20 = new Destroyer();
-        addObject(destroyer20, 486, 394);
-        Destroyer destroyer21 = new Destroyer();
-        addObject(destroyer21, 310, 389);
-        Destroyer destroyer22 = new Destroyer();
-        addObject(destroyer22, 452, 350);
-        Destroyer destroyer23 = new Destroyer();
-        addObject(destroyer23, 366, 371);
-        Destroyer destroyer24 = new Destroyer();
-        addObject(destroyer24, 456, 208);
-        Destroyer destroyer25 = new Destroyer();
-        addObject(destroyer25, 240, 298);
-        Destroyer destroyer26 = new Destroyer();
-        addObject(destroyer26, 368, 170);
-        Destroyer destroyer27 = new Destroyer();
-        addObject(destroyer27, 436, 211);
-        Destroyer destroyer28 = new Destroyer();
-        addObject(destroyer28, 344, 216);
-        Destroyer destroyer29 = new Destroyer();
-        addObject(destroyer29, 329, 305);
-        Destroyer destroyer30 = new Destroyer();
-        addObject(destroyer30, 476, 299);
-        Destroyer destroyer31 = new Destroyer();
-        addObject(destroyer31, 374, 346);
-        destroyer30.setLocation(296, 210);
-        destroyer28.setLocation(256, 209);
-        destroyer27.setLocation(337, 209);
-        destroyer19.setLocation(397, 223);
-        destroyer7.setLocation(137, 212);
-        destroyer18.setLocation(176, 212);
-        destroyer15.setLocation(217, 211);
-        destroyer28.setLocation(256, 211);
-        destroyer30.setLocation(300, 211);
-        destroyer19.setLocation(376, 210);
-        destroyer30.setLocation(296, 210);
-        destroyer15.setLocation(214, 211);
-        destroyer27.setLocation(335, 209);
-        destroyer26.setLocation(377, 170);
-        destroyer24.setLocation(375, 128);
-        destroyer29.setLocation(296, 252);
-        destroyer25.setLocation(215, 252);
-        destroyer31.setLocation(295, 289);
-        destroyer23.setLocation(336, 291);
-        destroyer22.setLocation(377, 292);
-        destroyer20.setLocation(255, 289);
-        destroyer21.setLocation(295, 369);
-        Destroyer destroyer32 = new Destroyer();
-        addObject(destroyer32, 377, 370);
-        Destroyer destroyer33 = new Destroyer();
-        addObject(destroyer33, 338, 368);
-        Destroyer destroyer34 = new Destroyer();
-        addObject(destroyer34, 377, 413);
-        Destroyer destroyer35 = new Destroyer();
-        addObject(destroyer35, 419, 369);
-        Destroyer destroyer36 = new Destroyer();
-        addObject(destroyer36, 459, 291);
-        Destroyer destroyer37 = new Destroyer();
-        addObject(destroyer37, 457, 329);
-        Destroyer destroyer38 = new Destroyer();
-        addObject(destroyer38, 459, 373);
-        Destroyer destroyer39 = new Destroyer();
-        addObject(destroyer39, 461, 413);
-        Destroyer destroyer40 = new Destroyer();
-        addObject(destroyer40, 456, 243);
-        Destroyer destroyer41 = new Destroyer();
-        addObject(destroyer41, 457, 209);
-        Destroyer destroyer42 = new Destroyer();
-        addObject(destroyer42, 459, 131);
-        Destroyer destroyer43 = new Destroyer();
-        addObject(destroyer43, 458, 171);
-        Destroyer destroyer44 = new Destroyer();
-        addObject(destroyer44, 459, 54);
-        Destroyer destroyer45 = new Destroyer();
-        addObject(destroyer45, 458, 87);
-        Destroyer destroyer46 = new Destroyer();
-        addObject(destroyer46, 420, 47);
-        Destroyer destroyer47 = new Destroyer();
-        addObject(destroyer47, 388, 49);
-        Destroyer destroyer48 = new Destroyer();
-        addObject(destroyer48, 353, 49);
-        Destroyer destroyer49 = new Destroyer();
-        addObject(destroyer49, 321, 50);
-        Destroyer destroyer50 = new Destroyer();
-        addObject(destroyer50, 286, 50);
-        Destroyer destroyer51 = new Destroyer();
-        addObject(destroyer51, 297, 86);
-        Destroyer destroyer52 = new Destroyer();
-        addObject(destroyer52, 137, 286);
-        Destroyer destroyer53 = new Destroyer();
-        addObject(destroyer53, 141, 333);
-        Destroyer destroyer54 = new Destroyer();
-        addObject(destroyer54, 134, 368);
-        Destroyer destroyer55 = new Destroyer();
-        addObject(destroyer55, 142, 411);
-        Destroyer destroyer56 = new Destroyer();
-        addObject(destroyer56, 175, 370);
-        Destroyer destroyer57 = new Destroyer();
-        addObject(destroyer57, 216, 370);
-        Destroyer destroyer58 = new Destroyer();
-        addObject(destroyer58, 219, 335);
-        Destroyer destroyer59 = new Destroyer();
-        addObject(destroyer59, 218, 292);
-        Destroyer destroyer60 = new Destroyer();
-        addObject(destroyer60, 179, 291);
-        Destroyer destroyer61 = new Destroyer();
-        addObject(destroyer61, 304, 449);
-        Destroyer destroyer62 = new Destroyer();
-        addObject(destroyer62, 263, 448);
-        Destroyer destroyer63 = new Destroyer();
-        addObject(destroyer63, 219, 453);
-        Destroyer destroyer64 = new Destroyer();
-        addObject(destroyer64, 176, 452);
-        Destroyer destroyer65 = new Destroyer();
-        addObject(destroyer65, 128, 453);
-        Destroyer destroyer66 = new Destroyer();
-        addObject(destroyer66, 339, 450);
-        Destroyer destroyer67 = new Destroyer();
-        addObject(destroyer67, 377, 450);
-        
-        Destroyer destroyer69 = new Destroyer();
-        addObject(destroyer69, 532, 408);
-        Destroyer destroyer70 = new Destroyer();
-        addObject(destroyer70, 533, 368);
-        Destroyer destroyer71 = new Destroyer();
-        addObject(destroyer71, 494, 365);
-        Destroyer destroyer72 = new Destroyer();
-        addObject(destroyer72, 537, 322);
-        Destroyer destroyer73 = new Destroyer();
-        addObject(destroyer73, 537, 290);
-        Destroyer destroyer74 = new Destroyer();
-        addObject(destroyer74, 536, 246);
-        Destroyer destroyer75 = new Destroyer();
-        addObject(destroyer75, 536, 210);
-        Destroyer destroyer76 = new Destroyer();
-        addObject(destroyer76, 537, 166);
-        Destroyer destroyer77 = new Destroyer();
-        addObject(destroyer77, 535, 130);
-        Destroyer destroyer78 = new Destroyer();
-        addObject(destroyer78, 534, 86);
-        Destroyer destroyer79 = new Destroyer();
-        addObject(destroyer79, 495, 125);
-        destroyer46.setLocation(421, 53);
-        destroyer47.setLocation(377, 52);
-        destroyer48.setLocation(334, 49);
-        destroyer50.setLocation(257, 53);
-        destroyer49.setLocation(297, 53);
-        destroyer51.setLocation(297, 92);
-        destroyer48.setLocation(338, 52);
-        destroyer47.setLocation(379, 52);
-        destroyer79.setLocation(497, 131);
-        destroyer42.setLocation(456, 129);
-        destroyer45.setLocation(454, 90);
-        destroyer78.setLocation(536, 92);
-        destroyer43.setLocation(454, 169);
-        destroyer40.setLocation(456, 248);
-        destroyer36.setLocation(454, 289);
-        destroyer37.setLocation(453, 329);
-        destroyer38.setLocation(451, 366);
-        destroyer35.setLocation(414, 369);
-        destroyer38.setLocation(453, 368);
-        destroyer71.setLocation(492, 370);
-        destroyer39.setLocation(455, 408);
-        destroyer21.setLocation(296, 371);
-        destroyer33.setLocation(335, 371);
-        destroyer32.setLocation(375, 371);
-        destroyer62.setLocation(259, 450);
-        destroyer61.setLocation(298, 449);
-        destroyer63.setLocation(221, 451);
-        destroyer63.setLocation(217, 450);
-        destroyer62.setLocation(257, 450);
-        destroyer64.setLocation(178, 450);
-        destroyer65.setLocation(139, 451);
-        destroyer55.setLocation(137, 408);
-        destroyer54.setLocation(136, 371);
-        destroyer56.setLocation(179, 370);
-        destroyer53.setLocation(137, 327);
-        destroyer54.setLocation(137, 369);
-        destroyer55.setLocation(138, 410);
-        destroyer15.setLocation(216, 212);
-        destroyer52.setLocation(137, 292);
-        destroyer53.setLocation(137, 332);
-        destroyer56.setLocation(177, 370);
-        destroyer58.setLocation(216, 330);
-        destroyer60.setLocation(177, 291);
-        destroyer73.setLocation(534, 289);
-        destroyer75.setLocation(535, 216);
-        destroyer76.setLocation(534, 173);
-        destroyer77.setLocation(535, 131);
-        destroyer79.setLocation(495, 131);
-        destroyer74.setLocation(536, 256);
-        destroyer75.setLocation(533, 211);
-        destroyer76.setLocation(534, 172);
-        destroyer75.setLocation(533, 212);
-        destroyer74.setLocation(535, 252);
-        destroyer75.setLocation(535, 212);
-        destroyer73.setLocation(535, 291);
-        destroyer72.setLocation(536, 330);
-        destroyer70.setLocation(534, 370);
-        destroyer69.setLocation(533, 409);
-        destroyer70.setLocation(533, 370);    
-    }
-   
-    
-    
+        BlocoDestrutivel BlocoDestrutivel69 = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel69, 532, 408);
+        BlocoDestrutivel BlocoDestrutivel70 = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel70, 533, 368);
+        BlocoDestrutivel BlocoDestrutivel71 = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel71, 494, 365);
+        BlocoDestrutivel BlocoDestrutivel72 = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel72, 537, 322);
+        BlocoDestrutivel BlocoDestrutivel73 = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel73, 537, 290);
+        BlocoDestrutivel BlocoDestrutivel74 = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel74, 536, 246);
+        BlocoDestrutivel BlocoDestrutivel75 = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel75, 536, 210);
+        BlocoDestrutivel BlocoDestrutivel76 = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel76, 537, 166);
+        BlocoDestrutivel BlocoDestrutivel77 = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel77, 535, 130);
+        BlocoDestrutivel BlocoDestrutivel78 = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel78, 534, 86);
+        BlocoDestrutivel BlocoDestrutivel79 = new BlocoDestrutivel();
+        addObject(BlocoDestrutivel79, 495, 125);
+        BlocoDestrutivel46.setLocation(421, 53);
+        BlocoDestrutivel47.setLocation(377, 52);
+        BlocoDestrutivel48.setLocation(334, 49);
+        BlocoDestrutivel50.setLocation(257, 53);
+        BlocoDestrutivel49.setLocation(297, 53);
+        BlocoDestrutivel51.setLocation(297, 92);
+        BlocoDestrutivel48.setLocation(338, 52);
+        BlocoDestrutivel47.setLocation(379, 52);
+        BlocoDestrutivel79.setLocation(497, 131);
+        BlocoDestrutivel42.setLocation(456, 129);
+        BlocoDestrutivel45.setLocation(454, 90);
+        BlocoDestrutivel78.setLocation(536, 92);
+        BlocoDestrutivel43.setLocation(454, 169);
+        BlocoDestrutivel40.setLocation(456, 248);
+        BlocoDestrutivel36.setLocation(454, 289);
+        BlocoDestrutivel37.setLocation(453, 329);
+        BlocoDestrutivel38.setLocation(451, 366);
+        BlocoDestrutivel35.setLocation(414, 369);
+        BlocoDestrutivel38.setLocation(453, 368);
+        BlocoDestrutivel71.setLocation(492, 370);
+        BlocoDestrutivel39.setLocation(455, 408);
+        BlocoDestrutivel21.setLocation(296, 371);
+        BlocoDestrutivel33.setLocation(335, 371);
+        BlocoDestrutivel32.setLocation(375, 371);
+        BlocoDestrutivel62.setLocation(259, 450);
+        BlocoDestrutivel61.setLocation(298, 449);
+        BlocoDestrutivel63.setLocation(221, 451);
+        BlocoDestrutivel63.setLocation(217, 450);
+        BlocoDestrutivel62.setLocation(257, 450);
+        BlocoDestrutivel64.setLocation(178, 450);
+        BlocoDestrutivel65.setLocation(139, 451);
+        BlocoDestrutivel55.setLocation(137, 408);
+        BlocoDestrutivel54.setLocation(136, 371);
+        BlocoDestrutivel56.setLocation(179, 370);
+        BlocoDestrutivel53.setLocation(137, 327);
+        BlocoDestrutivel54.setLocation(137, 369);
+        BlocoDestrutivel55.setLocation(138, 410);
+        BlocoDestrutivel15.setLocation(216, 212);
+        BlocoDestrutivel52.setLocation(137, 292);
+        BlocoDestrutivel53.setLocation(137, 332);
+        BlocoDestrutivel56.setLocation(177, 370);
+        BlocoDestrutivel58.setLocation(216, 330);
+        BlocoDestrutivel60.setLocation(177, 291);
+        BlocoDestrutivel73.setLocation(534, 289);
+        BlocoDestrutivel75.setLocation(535, 216);
+        BlocoDestrutivel76.setLocation(534, 173);
+        BlocoDestrutivel77.setLocation(535, 131);
+        BlocoDestrutivel79.setLocation(495, 131);
+        BlocoDestrutivel74.setLocation(536, 256);
+        BlocoDestrutivel75.setLocation(533, 211);
+        BlocoDestrutivel76.setLocation(534, 172);
+        BlocoDestrutivel75.setLocation(533, 212);
+        BlocoDestrutivel74.setLocation(535, 252);
+        BlocoDestrutivel75.setLocation(535, 212);
+        BlocoDestrutivel73.setLocation(535, 291);
+        BlocoDestrutivel72.setLocation(536, 330);
+        BlocoDestrutivel70.setLocation(534, 370);
+        BlocoDestrutivel69.setLocation(533, 409);
+        BlocoDestrutivel70.setLocation(533, 370); */
+    }    
 }
 
 

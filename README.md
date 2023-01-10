@@ -1,6 +1,9 @@
 # Jogo demonstrativo do Bomberman
 Este projeto foi desenvolvido pelo voluntário Allen Hichard sob a orientação do professor Aécio Junior. Este trabalho foi fonte de estudo no trabalho de conclusão de Curso  entitulado XXXXXXXXXX e publicado pela Universidade XXXXXXX - XXXXX no ano e XXXXX. 
 
+# Proposta: refatoração do jogo demonstrativo do Bomberman
+Fiz um Fork do repositório no GitHub para treinar minhas habilidades de Clean Code para melhorar ainda mais o projeto. Removendo códigos repetidos, alterar nomenclatura das variáveis, métodos e classes para tornar mais claro e intuitivo, otimizações e muito mais.
+
 ## Atributos do Jogo
 * Possui uma fase/mundo com cenário fixo.
 * Possui o modo para 2 Jogadores em modo duelo.
@@ -12,12 +15,19 @@ Este projeto foi desenvolvido pelo voluntário Allen Hichard sob a orientação 
 * Allen Hichard (xxxx@xxxx.xxxx)
 * Aécio Junior (xxxx@xxxx.xxxx)
 
-## Para mais sobre a iniciativa GreenfootBR acesse:
-* O site da comunidade DFJUG [http://www.dfjug.org](http://www.dfjug.org)
-* O canal do DFJUG no youtube [https://www.youtube.com/user/dfjug](https://www.youtube.com/user/dfjug)
-* O site oficial do Greenfoot [www.greenfoot.org](www.greenfoot.org)
+## Refatoração | Team
+
+* Gustavo Esteves (gustavoestevesr@gmail.com)
+
+## Jogar o jogo?
+
+- <a href="https://www.greenfoot.org/scenarios/30605">Play the game here! </a>
+
+![alt text](https://github.com/gustavoestevesr/JogoBomberman/blob/master/screenshot.png)
 
 ## Instalação | Installation
+
+* Greenfoot [www.greenfoot.org](www.greenfoot.org)
 
 ### Pré Requisitos | Prerequisites
 
@@ -33,5 +43,4 @@ Este projeto foi desenvolvido pelo voluntário Allen Hichard sob a orientação 
 > You may obtain a copy of the License at
 >
 >    http://www.apache.org/licenses/LICENSE-2.0
->
 
