@@ -278,16 +278,16 @@ public void checkup(){
 
     bomba.setImage(bomba4);
     World w = getWorld();
-    List top = w.getObjectsAt(bomba.getX(),bomba.getY()-40, Bloco.class);
-    List bot = w.getObjectsAt(bomba.getX(),bomba.getY()+40, Bloco.class);
-    List left = w.getObjectsAt(bomba.getX()-40,bomba.getY(), Bloco.class);
-    List right = w.getObjectsAt(bomba.getX()+40,bomba.getY(), Bloco.class);
+    List top = w.getObjectsAt(bomba.getX(),bomba.getY()-40, BlocoIndestrutivel.class);
+    List bot = w.getObjectsAt(bomba.getX(),bomba.getY()+40, BlocoIndestrutivel.class);
+    List left = w.getObjectsAt(bomba.getX()-40,bomba.getY(), BlocoIndestrutivel.class);
+    List right = w.getObjectsAt(bomba.getX()+40,bomba.getY(), BlocoIndestrutivel.class);
     
     
-    List top2 = w.getObjectsAt(bomba.getX(),bomba.getY()-40, Limite.class);
-    List bot2 = w.getObjectsAt(bomba.getX(),bomba.getY()+40, Limite.class);
-    List left2 = w.getObjectsAt(bomba.getX()-30,bomba.getY(), Limite.class);
-    List right2 = w.getObjectsAt(bomba.getX()+30,bomba.getY(), Limite.class);
+    List top2 = w.getObjectsAt(bomba.getX(),bomba.getY()-40, LimiteCenario.class);
+    List bot2 = w.getObjectsAt(bomba.getX(),bomba.getY()+40, LimiteCenario.class);
+    List left2 = w.getObjectsAt(bomba.getX()-30,bomba.getY(), LimiteCenario.class);
+    List right2 = w.getObjectsAt(bomba.getX()+30,bomba.getY(), LimiteCenario.class);
   
     
     if(top.isEmpty()){
@@ -332,10 +332,10 @@ public void checar(){
     
     if(!controle){
     World w = getWorld();
-    List top = w.getObjectsAt(getX(),getY()-15, Destroyer.class);
-    List bot = w.getObjectsAt(getX(),getY()+20, Destroyer.class);
-    List left = w.getObjectsAt(getX()-20,getY(), Destroyer.class);
-    List right = w.getObjectsAt(getX()+20,getY(), Destroyer.class);
+    List top = w.getObjectsAt(getX(),getY()-15, BlocoDestrutivel.class);
+    List bot = w.getObjectsAt(getX(),getY()+20, BlocoDestrutivel.class);
+    List left = w.getObjectsAt(getX()-20,getY(), BlocoDestrutivel.class);
+    List right = w.getObjectsAt(getX()+20,getY(), BlocoDestrutivel.class);
     if(right.isEmpty()){
         setLocation(getX()+3, getY());
     }
@@ -358,10 +358,10 @@ public void checar(){
 public void chegarBloco(){
   if(!controle){
     World w = getWorld();
-    List top = w.getObjectsAt(getX(),getY()-15, Bloco.class);
-    List bot = w.getObjectsAt(getX(),getY()+15, Bloco.class);
-    List left = w.getObjectsAt(getX()-15,getY(), Bloco.class);
-    List right = w.getObjectsAt(getX()+15,getY(), Bloco.class);
+    List top = w.getObjectsAt(getX(),getY()-15, BlocoIndestrutivel.class);
+    List bot = w.getObjectsAt(getX(),getY()+15, BlocoIndestrutivel.class);
+    List left = w.getObjectsAt(getX()-15,getY(), BlocoIndestrutivel.class);
+    List right = w.getObjectsAt(getX()+15,getY(), BlocoIndestrutivel.class);
     if(right.isEmpty()){
         setLocation(getX()+3, getY());
     }
@@ -382,10 +382,10 @@ public void chegarBloco(){
 public void chegarParede(){
   if(!controle){
     World w = getWorld();
-    List top = w.getObjectsAt(getX(),getY()-15, Limite.class);
-    List bot = w.getObjectsAt(getX(),getY()+20, Limite.class);
-    List left = w.getObjectsAt(getX()-20,getY(), Limite.class);
-    List right = w.getObjectsAt(getX()+20,getY(), Limite.class);
+    List top = w.getObjectsAt(getX(),getY()-15, LimiteCenario.class);
+    List bot = w.getObjectsAt(getX(),getY()+20, LimiteCenario.class);
+    List left = w.getObjectsAt(getX()-20,getY(), LimiteCenario.class);
+    List right = w.getObjectsAt(getX()+20,getY(), LimiteCenario.class);
     if(right.isEmpty()){
         setLocation(getX()+3, getY());
     }
