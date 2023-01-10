@@ -36,5 +36,3 @@ Fiz um Fork do repositório no GitHub para treinar minhas habilidades de Clean C
 > You may obtain a copy of the License at
 >
 >    http://www.apache.org/licenses/LICENSE-2.0
->
-
