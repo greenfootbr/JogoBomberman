@@ -12,9 +12,13 @@ Refatoração do jogo Bomberman. Fiz um Fork do repositório no GitHub para trei
 * Tem trilha sonora imagens e movimentos semelhantes ao Jogo do Bombermen official.
 * Tempo de desenvolvimento: XXXXXXXXX
 
+## 🤔 Quais foram algumas das modificações?
+-  <a href="https://www.linkedin.com/feed/update/urn:li:activity:7017982398072008704/">🔗 Acessar o post com as imagens! </a>
+
+
 ## 🎮 Como jogar o jogo?
 
--  <a href="https://www.greenfoot.org/scenarios/30605">🔗 Play the game here! </a>
+-  <a href="https://www.greenfoot.org/scenarios/30605">🔗 Clique aqui para jogar! </a>
 
 ![alt text](https://github.com/gustavoestevesr/JogoBomberman/blob/master/screenshot.png)
 
